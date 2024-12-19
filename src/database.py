@@ -1,4 +1,6 @@
+# src/database.py
 import os
+import pandas as pd
 from sqlalchemy import create_engine
 
 # Set defaults if environment variables are not found
@@ -11,6 +13,8 @@ database = os.getenv('DB_NAME', 'telecom_data')
 connection_url = f'postgresql://{username}:{password}@{host}:{port}/{database}'
 engine = create_engine(connection_url)
 
-with engine.connect() as conn:
-    print("Connection established")
-
+def load_data(query):
+    """Fetch data from the PostgreSQL database."""
+    with engine.connect() as conn:
+        data = pd.read_sql(query, conn)
+    return data
