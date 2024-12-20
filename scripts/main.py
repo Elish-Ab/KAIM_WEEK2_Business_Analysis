@@ -62,17 +62,16 @@ except Exception as e:
 try:
     # 1. Get Top 10 Handsets
     top_handsets = analyzer.get_top_handsets(df)
-    analyzer.plot_top_handsets(df)
+    analyzer.plot_top_handsets(df)  # Corrected plot call
     print("Top 10 Handsets:\n", top_handsets)
 
     # 2. Get Top 3 Manufacturers
     top_manufacturers = analyzer.get_top_manufacturers(df)
-    analyzer.plot_top_handsets_per_manufacturer(df)
+    analyzer.plot_top_manufacturers(df)  # Corrected plot call
     print("\nTop 3 Manufacturers:\n", top_manufacturers)
 
     # 3. Get Top 5 Handsets Per Manufacturer
-    analyzer.plot_top_handsets_per_manufacturer(df,top_manufacturers)
-
+    analyzer.plot_top_handsets_per_manufacturer(df, top_manufacturers)
 
     # 4. Aggregate User Behavior
     user_behavior = analyzer.aggregate_user_behavior(df)
@@ -87,16 +86,13 @@ try:
 
     # 7. Analyze Application Usage
     analyzer.analyze_application_usage(df, 'social_media_dl_(bytes)', 'total_dl_(bytes)')
-    analyzer.plot_application_usage(df,'social_media_dl_(bytes)', 'total_dl_(bytes)')
+
     # 8. Compute Correlation Matrix for Application Usage
     correlation_matrix = analyzer.compute_correlation_matrix(df, 
                                                            columns=['social_media_dl_(bytes)', 'google_dl_(bytes)', 
                                                                     'email_dl_(bytes)', 'youtube_dl_(bytes)', 
                                                                     'netflix_dl_(bytes)', 'gaming_dl_(bytes)'])
     print("\nCorrelation Matrix:\n", correlation_matrix)
-    analyzer.plot_correlation_matrix(df,columns=['social_media_dl_(bytes)', 'google_dl_(bytes)', 
-                                                                    'email_dl_(bytes)', 'youtube_dl_(bytes)', 
-                                                                    'netflix_dl_(bytes)', 'gaming_dl_(bytes)'])
 
 except KeyError as e:
     print(f"Missing column for analysis: {e}")
