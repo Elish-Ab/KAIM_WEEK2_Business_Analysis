@@ -13,5 +13,5 @@ This project aims to analyze the telecom data to identify key insights and oppor
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd <project_folder>
+   git clone https://github.com/Elish-Ab/KAIM_WEEK2_Business_Analysis
+   cd WEEK2
